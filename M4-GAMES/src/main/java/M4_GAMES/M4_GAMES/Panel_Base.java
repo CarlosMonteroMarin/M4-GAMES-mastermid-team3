@@ -38,6 +38,11 @@ public class Panel_Base extends JFrame {
 		lblNewLabel.setBounds(525, 42, 124, 14);
 		contentPane.add(lblNewLabel);
 		aux.crear_colores(contentPane);
+		aux.crear_solucion(contentPane);
+		
+		JLabel lblNewLabel_1 = new JLabel("Solucion");
+		lblNewLabel_1.setBounds(525, 129, 124, 14);
+		contentPane.add(lblNewLabel_1);
 		
 	}
 }
