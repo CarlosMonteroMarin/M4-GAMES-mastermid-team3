@@ -9,6 +9,7 @@ public class Colores {
 private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	
 	private Color colores_disponibles[];
+	private Color[] solucion_colores;
 	private int dificultad=0;
 	private int principio=0;
 	
@@ -16,9 +17,12 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 		this.dificultad=dificultad;
 		if(dificultad!=4) {
 			this.colores_disponibles= new Color[dificultad];
+			this.solucion_colores = new Color[dificultad];
 		}else {
 			this.colores_disponibles = new Color[VALOR_DEFAULT_DIFICULTAD];
+			this.solucion_colores = new Color[VALOR_DEFAULT_DIFICULTAD];
 		}
+		
 		this.principio=525;
 	}
 	
@@ -31,11 +35,22 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 			this.principio=principio+35;
 			contentPane.add(panel);
 		}
+		this.principio = 525;
 
 	}
 	
-	
-	
+	public void crear_solucion(JPanel contentPane) {
+        for (int i=0; i<dificultad; i++) {
+			solucion_colores[i] = colores_disponibles[getRandomNumber(0, colores_disponibles.length-1)];
+            Panel panel1 = new Panel();
+            panel1.setBounds(principio, 150, 20, 20);
+            panel1.setBackground(solucion_colores[i]);
+            panel1.setVisible(false);
+            this.principio=principio+35;
+            contentPane.add(panel1);
+            
+        }
+    }
 	
 	
 	
