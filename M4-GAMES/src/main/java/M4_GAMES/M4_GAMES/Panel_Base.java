@@ -37,6 +37,7 @@ public class Panel_Base extends JFrame {
 	 * Create the frame.
 	 */
 	public Panel_Base() {
+		
 		this.aux = new Colores(4);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -107,8 +108,7 @@ public class Panel_Base extends JFrame {
 		
 		JMenuItem item_ayuda_jugar = new JMenuItem("Acerca De");
 		apartado_menu_salir.add(item_ayuda_jugar);
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		Canvas canvas = new Canvas();
