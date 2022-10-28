@@ -10,12 +10,12 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	
 	private Color colores_disponibles[];
 	private Color[] solucion_colores;
-	private int dificultad=0;
+	public int dificultad=0;
 	private int principio=0;
 	
 	public Colores(int dificultad) {
 		this.dificultad=dificultad;
-		if(dificultad!=4) {
+		if(dificultad > 4 && dificultad <= 6) {
 			this.colores_disponibles= new Color[dificultad];
 			this.solucion_colores = new Color[dificultad];
 		}else {
