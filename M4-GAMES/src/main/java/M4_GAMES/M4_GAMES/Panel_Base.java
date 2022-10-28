@@ -15,7 +15,6 @@ public class Panel_Base extends JFrame {
 	
 	private Color colors;
 	private Color colores_disponibles;
-	VALOR_DEFAULT_JUEGO = dificultad;
 	private int dificultad;
 	
 	/**
