@@ -37,6 +37,7 @@ public class Panel_Base extends JFrame {
 	 * Create the frame.
 	 */
 	public Panel_Base() {
+
 		Seleccionar_nivel frame1 = new Seleccionar_nivel();
 		frame1.setVisible(true);
 		
@@ -110,6 +111,7 @@ public class Panel_Base extends JFrame {
 		
 		JMenuItem item_ayuda_jugar = new JMenuItem("Acerca De");
 		apartado_menu_salir.add(item_ayuda_jugar);
+
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		Canvas canvas = new Canvas();
