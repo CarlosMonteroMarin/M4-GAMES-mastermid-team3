@@ -11,8 +11,11 @@ import javax.swing.JTable;
 
 public class Panel_Base extends JFrame {
 	
+	private static final int VALOR_DEFAULT_JUEGO = 4;
+	
 	private Color colors;
 	private Color colores_disponibles;
+	VALOR_DEFAULT_JUEGO = dificultad;
 	private int dificultad;
 	
 	/**
@@ -45,6 +48,6 @@ public class Panel_Base extends JFrame {
 	
 	
 	public void ColoresDisponibles() {
-		colors.
+		
 	}
 }
