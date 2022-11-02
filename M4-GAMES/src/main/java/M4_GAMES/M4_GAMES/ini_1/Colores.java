@@ -1,6 +1,7 @@
 package M4_GAMES.M4_GAMES.ini_1;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Panel;
 
 import javax.swing.JOptionPane;
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 import M4_GAMES.M4_GAMES.Seleccionar_colores;
 
 public class Colores {
+private static Panel[] panelSolucion = null;
 private static int VALOR_DEFAULT_DIFICULTAD = 4;
 private static int VALOR_INTENTOS_DEFAULT = 10;
 	
@@ -42,6 +44,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		this.altura=35;
 		this.num_intentos = 0;
 		this.acabado=false;
+		this.panelSolucion = new Panel[dificultad];
 	}
 	
 	public Colores (Color lista_colores[], int dificultad) {
@@ -49,20 +52,21 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		if(dificultad > 4 && dificultad <= 6) {
 			this.colores_disponibles= lista_colores;
 			this.solucion_colores = new Color[dificultad];
+			if(dificultad==5) this.intentos=8;
+			if(dificultad == 6) this.intentos=6;
 		}else {
 			this.colores_disponibles= lista_colores;
 			this.solucion_colores = new Color[VALOR_DEFAULT_DIFICULTAD];
+			this.intentos = VALOR_INTENTOS_DEFAULT;
 		}
 		
 		this.principio=525;
+		this.principi=315;
+		this.altura=35;
+		this.num_intentos = 0;
+		this.acabado=false;
+		this.panelSolucion = new Panel[dificultad];
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public void crear_colores(JPanel contentPane) {
 		for(int i=0;i<dificultad;i++) {
@@ -93,12 +97,12 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 	public void crear_solucion(JPanel contentPane) {
         for (int i=0; i<dificultad; i++) {
 			solucion_colores[i] = colores_disponibles[getRandomNumber(0, colores_disponibles.length-1)];
-            Panel panel1 = new Panel();
-            panel1.setBounds(principio, 150, 20, 20);
-            panel1.setBackground(solucion_colores[i]);
-            panel1.setVisible(true);
+			panelSolucion[i] = new Panel();
+            panelSolucion[i].setBounds(principio, 150, 20, 20);
+            panelSolucion[i].setBackground(solucion_colores[i]);
+            panelSolucion[i].setVisible(false);
             this.principio=principio+35;
-            contentPane.add(panel1);
+            contentPane.add(panelSolucion[i]);
             
         }
     }
@@ -149,14 +153,16 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 				iguals = false;
 				fet = false;
 				if( acertada==this.dificultad ) {
+					for (int k = 0; k < panelSolucion.length; k++) {
+						panelSolucion[k].setVisible(true);
+					}
 					JOptionPane.showMessageDialog(contentPane, "Enhorabuena, has ganado!");
-					contentPane.setVisible(true);
 					acabado=true;
 					return;
 				}
 		}
 		principi = 315;
-		altura = altura + 25;
+		altura = altura + 36;
 	}
 			
 	public boolean comprovarIntentos() {
