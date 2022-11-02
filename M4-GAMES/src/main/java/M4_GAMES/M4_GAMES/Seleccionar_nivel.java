@@ -90,6 +90,28 @@ public class Seleccionar_nivel extends JFrame {
 				dispose();
 			}
 		});
+		
+		rdb_principiante.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dificultad=4;
+			}
+		});
+		
+		rdb_medio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dificultad=5;
+			}
+		});
+		
+		rdb_avanzado.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dificultad=6;
+			}
+		});
+		
 	}
 	
 	public static int getDificultad() {

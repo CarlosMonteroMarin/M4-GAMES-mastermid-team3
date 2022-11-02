@@ -42,6 +42,7 @@ public class Panel_Base extends JFrame {
 	 */
 	public Panel_Base() {
 		
+
 		recorrerColores = -1;
 		dificultad = Seleccionar_nivel.getDificultad();
 		
@@ -63,8 +64,9 @@ public class Panel_Base extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+
 		JPanel objeto_comprobar = new JPanel();
-		objeto_comprobar.setBounds(22, 11, 169, 43);
+		objeto_comprobar.setBounds(22, 11, 169, 43);ç
 		panel.add(objeto_comprobar);
 		objeto_comprobar.setBorder(new EmptyBorder(5, 5, 5, 5));
 		objeto_comprobar.setLayout(null);
@@ -72,6 +74,11 @@ public class Panel_Base extends JFrame {
 		final Panel color_1 = new Panel();
 		color_1.setBounds(10, 10, 20, 20);
 		color_1.setBackground(Color.WHITE);
+
+		JButton btn_comprobar_1 = new JButton("Comprobar");
+		btn_comprobar_1.setBounds(121, 10, 85, 23);
+		
+		objeto_comprobar.setLayout(null);
 		objeto_comprobar.add(color_1);
 		color_1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -176,6 +183,13 @@ public class Panel_Base extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Solucion");
 		lblNewLabel_1.setBounds(525, 129, 124, 14);
 		contentPane.add(lblNewLabel_1);
+		
+		btn_comprobar_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				aux.comprobar_aciertos(contentPane,objeto_comprobar);
+			}
+		});
 
 		
 	}
