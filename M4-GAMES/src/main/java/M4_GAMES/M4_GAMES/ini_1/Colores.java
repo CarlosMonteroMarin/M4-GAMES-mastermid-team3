@@ -45,16 +45,15 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
             Panel panel1 = new Panel();
             panel1.setBounds(principio, 150, 20, 20);
             panel1.setBackground(solucion_colores[i]);
-            panel1.setVisible(false);
+            panel1.setVisible(true);
             this.principio=principio+35;
             contentPane.add(panel1);
             
         }
     }
 	
-	
-	
 	public int getRandomNumber(int min, int max) {
 	    return (int) ((Math.random() * (max - min)) + min);
 	}
+
 }

@@ -7,8 +7,5 @@ public class mainApp
 		Seleccionar_nivel frame1 = new Seleccionar_nivel();
 		frame1.setVisible(true);
 		
-
-		Panel_Base frame = new Panel_Base();
-		frame.setVisible(true);
 	}
 }

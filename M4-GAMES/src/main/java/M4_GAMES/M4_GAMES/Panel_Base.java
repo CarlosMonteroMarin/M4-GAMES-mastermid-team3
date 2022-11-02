@@ -38,7 +38,7 @@ public class Panel_Base extends JFrame {
 	 */
 	public Panel_Base() {
 		
-		this.aux = new Colores(4);
+		this.aux = new Colores(Seleccionar_nivel.getDificultad());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	

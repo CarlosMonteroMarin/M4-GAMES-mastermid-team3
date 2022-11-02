@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import M4_GAMES.M4_GAMES.ini_1.Colores;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,8 +19,7 @@ import java.awt.Font;
 public class Seleccionar_nivel extends JFrame {
 
 	private JPanel contentPane;
-
-
+	private static int dificultad;
 
 	/**
 	 * Create the frame.
@@ -39,18 +41,21 @@ public class Seleccionar_nivel extends JFrame {
 		contentPane.add(contentPane_1);
 		
 		JRadioButton rdb_principiante = new JRadioButton("Principiante");
+		rdb_principiante.setActionCommand("4");
 		rdb_principiante.setBounds(39, 37, 109, 23);
 		contentPane_1.add(rdb_principiante);
 		
 		JRadioButton rdb_medio = new JRadioButton("Medio");
+		rdb_medio.setActionCommand("5");
 		rdb_medio.setBounds(39, 86, 109, 23);
 		contentPane_1.add(rdb_medio);
 		
 		JRadioButton rdb_avanzado = new JRadioButton("Avanzado");
+		rdb_avanzado.setActionCommand("6");
 		rdb_avanzado.setBounds(39, 139, 109, 23);
 		contentPane_1.add(rdb_avanzado);
 		
-		ButtonGroup bgroup =new ButtonGroup();
+		final ButtonGroup bgroup =new ButtonGroup();
 		bgroup.add(rdb_principiante);
 		bgroup.add(rdb_medio);
 		bgroup.add(rdb_avanzado);
@@ -73,13 +78,21 @@ public class Seleccionar_nivel extends JFrame {
 		//EVENTOS
 		btn_cancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		dispose();
-				}
+				dispose();
+			}
 		});
 		
 		btn_aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dificultad = Integer.parseInt(bgroup.getSelection().getActionCommand());
+				Panel_Base frame = new Panel_Base();
+				frame.setVisible(true);
+				dispose();
 			}
 		});
+	}
+	
+	public static int getDificultad() {
+		return dificultad;
 	}
 }
