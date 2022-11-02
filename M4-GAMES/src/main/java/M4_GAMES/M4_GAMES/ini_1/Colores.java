@@ -12,6 +12,7 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	private Color[] solucion_colores;
 	public int dificultad=0;
 	private int principio=0;
+	private int intentos;
 	
 	public Colores(int dificultad) {
 		this.dificultad=dificultad;
@@ -21,6 +22,7 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 		}else {
 			this.colores_disponibles = new Color[VALOR_DEFAULT_DIFICULTAD];
 			this.solucion_colores = new Color[VALOR_DEFAULT_DIFICULTAD];
+			this.intentos = VALOR_DEFAULT_DIFICULTAD;
 		}
 		
 		this.principio=525;
@@ -45,12 +47,44 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
             Panel panel1 = new Panel();
             panel1.setBounds(principio, 150, 20, 20);
             panel1.setBackground(solucion_colores[i]);
-            panel1.setVisible(true);
+            panel1.setVisible(false);
             this.principio=principio+35;
             contentPane.add(panel1);
             
         }
     }
+	
+	public void comprobar_aciertos(JPanel contentPane, JPanel colores) {
+		int principi = 275;
+		int lugar_color_solucion=1;
+		int lugar_color_actual=1;
+		
+		for(int i = 0; i < dificultad; i++) {
+			for(int j = 0; j < dificultad; j++) {
+				if(!(colores.getBackground().equals(Color.white))) {
+				if((solucion_colores[i].equals(colores.getComponent(j).getBackground()))&&(lugar_color_solucion == lugar_color_actual)){
+					Panel aux = new Panel();
+					aux.setBounds(principi, 33, 20, 20);
+					aux.setBackground(Color.BLACK);
+					contentPane.add(aux);
+					lugar_color_actual++;
+				}
+					if(solucion_colores[i].equals(colores.getComponent(j).getBackground()))
+					{
+						Panel aux = new Panel();
+						aux.setBounds(principi, 33, 20, 20);
+						aux.setBackground(Color.WHITE);
+						contentPane.add(aux);
+						lugar_color_actual++;
+					}
+						principi = principi + 35;
+						lugar_color_solucion++;
+				}
+			}
+		}
+			
+		
+	}
 	
 	public int getRandomNumber(int min, int max) {
 	    return (int) ((Math.random() * (max - min)) + min);
