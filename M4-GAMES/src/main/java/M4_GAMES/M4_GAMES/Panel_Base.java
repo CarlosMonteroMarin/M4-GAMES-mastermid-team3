@@ -52,10 +52,16 @@ public class Panel_Base extends JFrame {
 	 */
 
 	public Panel_Base(Color lista_colores[]) {
-		this.aux = new Colores(lista_colores, Seleccionar_nivel.getDificultad());
 		
+		recorrerColores = -1;
+		altura = 10;
+		longitud = 10;
+		alturaComprobar = 21;
+		coloresHechos = new Panel[6];
+		dificultad = Seleccionar_nivel.getDificultad();
+		
+		this.aux = new Colores(lista_colores, Seleccionar_nivel.getDificultad());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	
 
 		setBounds(100, 100, 750, 750);
@@ -71,35 +77,84 @@ public class Panel_Base extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JPanel objeto_comprobar = new JPanel();
-		objeto_comprobar.setBounds(22, 11, 216, 43);
+		final JPanel objeto_comprobar = new JPanel();
+		objeto_comprobar.setBounds(22, 11, 169, 616);
 		panel.add(objeto_comprobar);
 		objeto_comprobar.setBorder(new EmptyBorder(5, 5, 5, 5));
+		objeto_comprobar.setLayout(null);
 		
-		Panel color_1 = new Panel();
+		final Panel color_1 = new Panel();
 		color_1.setBounds(10, 10, 20, 20);
 		color_1.setBackground(Color.WHITE);
 		
-		JButton btn_comprobar_1 = new JButton("Comprobar");
-		btn_comprobar_1.setBounds(121, 10, 85, 23);
 		objeto_comprobar.setLayout(null);
 		objeto_comprobar.add(color_1);
-		objeto_comprobar.add(btn_comprobar_1);
+		color_1.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_1);
+			}
+		});
 		
-		Panel color_2 = new Panel();
+		final Panel color_2 = new Panel();
 		color_2.setBackground(Color.WHITE);
 		color_2.setBounds(36, 10, 20, 20);
 		objeto_comprobar.add(color_2);
+		color_2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_2);
+			}
+		});
 		
-		Panel color_3 = new Panel();
+		final Panel color_3 = new Panel();
 		color_3.setBackground(Color.WHITE);
 		color_3.setBounds(62, 10, 20, 20);
 		objeto_comprobar.add(color_3);
+		color_3.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_3);
+			}
+		});
 		
-		Panel color_4 = new Panel();
+		final Panel color_4 = new Panel();
 		color_4.setBackground(Color.WHITE);
 		color_4.setBounds(88, 10, 20, 20);
 		objeto_comprobar.add(color_4);
+		color_4.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_4);
+			}
+		});
+		
+		final Panel color_5 = new Panel();
+		color_5.setBackground(Color.WHITE);
+		color_5.setBounds(114, 10, 20, 20);
+		objeto_comprobar.add(color_5);
+		color_5.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_5);
+			}
+		});
+		
+		final Panel color_6 = new Panel();
+		color_6.setBackground(Color.WHITE);
+		color_6.setBounds(140, 10, 20, 20);
+		objeto_comprobar.add(color_6);
+		color_6.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				seleccionarColor(e, color_6);
+			}
+		});
+		
+		if (dificultad < 6) {
+			color_6.setVisible(false);
+		}
+		if (dificultad < 5) {
+			color_5.setVisible(false);
+		}
+		
+		final JButton btn_comprobar_1 = new JButton("Comprobar");
+		btn_comprobar_1.setBounds(192, 21, 85, 23);
+		panel.add(btn_comprobar_1);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setMargin(new Insets(5, 5, 5, 5));
@@ -131,12 +186,6 @@ public class Panel_Base extends JFrame {
 		apartado_menu_salir.add(item_ayuda_jugar);
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		recorrerColores = -1;
-		altura = 10;
-		longitud = 10;
-		alturaComprobar = 21;
-		coloresHechos = new Panel[6];
-		dificultad = Seleccionar_nivel.getDificultad();
 		
 		Canvas canvas = new Canvas();
 		canvas.setBounds(75, 68, 81, 64);
@@ -150,10 +199,50 @@ public class Panel_Base extends JFrame {
 		aux.imprimir_colores(contentPane);
 		aux.crear_solucion(contentPane);
 		
-		JLabel lblNewLabel_1 = new JLabel("Solucion");
+		final JLabel lblNewLabel_1 = new JLabel("Solucion");
 		lblNewLabel_1.setBounds(525, 129, 124, 14);
 		contentPane.add(lblNewLabel_1);
 
+		btn_comprobar_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(aux.comprovarIntentos()||(aux.isAcabado())) {
+					lblNewLabel_1.setVisible(true);
+					btn_comprobar_1.setVisible(false);
+				} else {
+					aux.comprobar_aciertos(contentPane,objeto_comprobar);
+				}
+				for (int i = 0; i < dificultad; i++) {
+					coloresHechos[i] = new Panel();
+					coloresHechos[i].setBackground(objeto_comprobar.getComponent(i).getBackground());
+					coloresHechos[i].setBounds(longitud, altura, 20, 20);
+					longitud += 26;
+					objeto_comprobar.add(coloresHechos[i]);
+				}
+				longitud = 10;
+				altura += 36;
+				alturaComprobar += 36;
+				color_1.setBounds(10, altura, 20, 20);
+				color_1.setBackground(Color.WHITE);
+				color_2.setBounds(36, altura, 20, 20);
+				color_2.setBackground(Color.WHITE);
+				color_3.setBounds(62, altura, 20, 20);
+				color_3.setBackground(Color.WHITE);
+				color_4.setBounds(88, altura, 20, 20);
+				color_4.setBackground(Color.WHITE);
+				if (dificultad > 4) {
+					color_5.setBounds(114, altura, 20, 20);
+					color_5.setBackground(Color.WHITE);
+				}
+				if (dificultad > 5) {
+					color_6.setBounds(140, altura, 20, 20);
+					color_6.setBackground(Color.WHITE);
+				}
+				btn_comprobar_1.setBounds(192, alturaComprobar, 85, 23);
+				recorrerColores = -1;
+			}
+		});
+		
 		//EVENTOS
 		item_menu_selecionarColores.addMouseListener(new MouseAdapter() {
 			@Override
@@ -200,6 +289,13 @@ public class Panel_Base extends JFrame {
 	
 	public Panel_Base() {
 
+		recorrerColores = -1;
+		altura = 10;
+		longitud = 10;
+		alturaComprobar = 21;
+		coloresHechos = new Panel[6];
+		dificultad = Seleccionar_nivel.getDificultad();
+		
 		this.aux = new Colores(Seleccionar_nivel.getDificultad());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -212,7 +308,7 @@ public class Panel_Base extends JFrame {
 		
     
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 321, 656);
+		panel.setBounds(10, 11, 284, 656);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
