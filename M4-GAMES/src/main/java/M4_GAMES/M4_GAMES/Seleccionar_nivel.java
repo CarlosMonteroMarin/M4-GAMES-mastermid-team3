@@ -15,12 +15,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class Seleccionar_nivel extends JFrame {
 
-	private int dificultad;
 	private JPanel contentPane;
 	private static int dificultad;
 
@@ -43,28 +40,20 @@ public class Seleccionar_nivel extends JFrame {
 		contentPane_1.setBounds(88, 44, 191, 195);
 		contentPane.add(contentPane_1);
 		
-
-		JRadioButton rdb_principiante = new JRadioButton("Principiante", true);
+		JRadioButton rdb_principiante = new JRadioButton("Principiante");
+		rdb_principiante.setActionCommand("4");
 		rdb_principiante.setBounds(39, 37, 109, 23);
 		contentPane_1.add(rdb_principiante);
-		rdb_principiante.setActionCommand("4");
-
-		
 		
 		JRadioButton rdb_medio = new JRadioButton("Medio");
 		rdb_medio.setActionCommand("5");
 		rdb_medio.setBounds(39, 86, 109, 23);
 		contentPane_1.add(rdb_medio);
-		rdb_medio.setActionCommand("5");
-
-
 		
 		JRadioButton rdb_avanzado = new JRadioButton("Avanzado");
 		rdb_avanzado.setActionCommand("6");
 		rdb_avanzado.setBounds(39, 139, 109, 23);
 		contentPane_1.add(rdb_avanzado);
-		rdb_avanzado.setActionCommand("6");
-
 		
 		final ButtonGroup bgroup =new ButtonGroup();
 		bgroup.add(rdb_principiante);
@@ -101,34 +90,6 @@ public class Seleccionar_nivel extends JFrame {
 				dispose();
 			}
 		});
-		
-		rdb_principiante.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=4;
-			}
-		});
-		
-		rdb_medio.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=5;
-			}
-		});
-		
-		rdb_avanzado.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=6;
-			}
-		});
-		
-	}
-	
-	
-	//getter
-	public int getDificultad() {
-		return this.dificultad;
 	}
 	
 	public static int getDificultad() {

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class Colores {
 private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	
-	private Color colores_disponibles[];
+	private static Color colores_disponibles[];
 	private Color[] solucion_colores;
 	public int dificultad=0;
 	private int principio=0;
@@ -45,7 +45,7 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
             Panel panel1 = new Panel();
             panel1.setBounds(principio, 150, 20, 20);
             panel1.setBackground(solucion_colores[i]);
-            panel1.setVisible(true);
+            panel1.setVisible(false);
             this.principio=principio+35;
             contentPane.add(panel1);
             
@@ -54,6 +54,10 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	
 	public int getRandomNumber(int min, int max) {
 	    return (int) ((Math.random() * (max - min)) + min);
+	}
+	
+	public static Color[] getColores() {
+		return colores_disponibles;
 	}
   
 }
