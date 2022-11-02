@@ -22,6 +22,7 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 		}else {
 			this.colores_disponibles = new Color[VALOR_DEFAULT_DIFICULTAD];
 			this.solucion_colores = new Color[VALOR_DEFAULT_DIFICULTAD];
+			this.intentos = VALOR_DEFAULT_DIFICULTAD;
 		}
 		
 		this.principio=525;
