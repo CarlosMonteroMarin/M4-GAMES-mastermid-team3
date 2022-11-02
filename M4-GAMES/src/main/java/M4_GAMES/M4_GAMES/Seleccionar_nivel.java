@@ -20,9 +20,8 @@ import java.awt.event.MouseEvent;
 
 public class Seleccionar_nivel extends JFrame {
 
-	private int dificultad;
-	private JPanel contentPane;
 	private static int dificultad;
+	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
@@ -127,10 +126,6 @@ public class Seleccionar_nivel extends JFrame {
 	
 	
 	//getter
-	public int getDificultad() {
-		return this.dificultad;
-	}
-	
 	public static int getDificultad() {
 		return dificultad;
 	}
