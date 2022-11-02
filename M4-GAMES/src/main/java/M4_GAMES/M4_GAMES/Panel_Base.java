@@ -327,7 +327,7 @@ public class Panel_Base extends JFrame {
 		aux.crear_colores(contentPane);
 		aux.crear_solucion(contentPane);
 		
-		JLabel lblNewLabel_1 = new JLabel("Solucion");
+		final JLabel lblNewLabel_1 = new JLabel("Solucion");
 		lblNewLabel_1.setBounds(525, 129, 124, 14);
 		contentPane.add(lblNewLabel_1);
 		
@@ -335,6 +335,7 @@ public class Panel_Base extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(aux.comprovarIntentos()||(aux.isAcabado())) {
+					lblNewLabel_1.setVisible(true);
 					btn_comprobar_1.setVisible(false);
 				} else {
 					aux.comprobar_aciertos(contentPane,objeto_comprobar);

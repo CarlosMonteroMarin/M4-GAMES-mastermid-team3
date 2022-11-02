@@ -118,7 +118,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		
 		for(int i = 0; i < dificultad; i++) {
 			for(int j = 0; j < dificultad; j++) {
-				if((solucion_colores[j].equals(colores.getComponent(i).getBackground()))&&(fet==false)){
+				if((solucion_colores[i].equals(colores.getComponent(j).getBackground()))&&(fet==false)){
 					trobat = true;
 					if(i==j) {
 						iguals = true;
@@ -150,6 +150,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 				fet = false;
 				if( acertada==this.dificultad ) {
 					JOptionPane.showMessageDialog(contentPane, "Enhorabuena, has ganado!");
+					contentPane.setVisible(true);
 					acabado=true;
 					return;
 				}
