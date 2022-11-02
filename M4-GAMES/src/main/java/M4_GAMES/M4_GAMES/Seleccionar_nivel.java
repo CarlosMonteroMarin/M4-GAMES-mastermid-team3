@@ -42,7 +42,7 @@ public class Seleccionar_nivel extends JFrame {
 		contentPane_1.setBounds(88, 44, 191, 195);
 		contentPane.add(contentPane_1);
 		
-		JRadioButton rdb_principiante = new JRadioButton("Principiante");
+		JRadioButton rdb_principiante = new JRadioButton("Principiante", true);
 		rdb_principiante.setActionCommand("4");
 		rdb_principiante.setBounds(39, 37, 109, 23);
 		contentPane_1.add(rdb_principiante);
