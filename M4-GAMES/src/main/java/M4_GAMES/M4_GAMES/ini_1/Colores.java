@@ -55,5 +55,5 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
 	public int getRandomNumber(int min, int max) {
 	    return (int) ((Math.random() * (max - min)) + min);
 	}
-
+  
 }
