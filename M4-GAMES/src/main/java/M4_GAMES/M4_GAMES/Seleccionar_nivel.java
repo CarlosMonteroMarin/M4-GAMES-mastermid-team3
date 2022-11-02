@@ -22,8 +22,7 @@ public class Seleccionar_nivel extends JFrame {
 
 	private int dificultad;
 	private JPanel contentPane;
-
-
+	private static int dificultad;
 
 	/**
 	 * Create the frame.
@@ -44,6 +43,7 @@ public class Seleccionar_nivel extends JFrame {
 		contentPane_1.setBounds(88, 44, 191, 195);
 		contentPane.add(contentPane_1);
 		
+
 		JRadioButton rdb_principiante = new JRadioButton("Principiante", true);
 		rdb_principiante.setBounds(39, 37, 109, 23);
 		contentPane_1.add(rdb_principiante);
@@ -52,6 +52,7 @@ public class Seleccionar_nivel extends JFrame {
 		
 		
 		JRadioButton rdb_medio = new JRadioButton("Medio");
+		rdb_medio.setActionCommand("5");
 		rdb_medio.setBounds(39, 86, 109, 23);
 		contentPane_1.add(rdb_medio);
 		rdb_medio.setActionCommand("5");
@@ -59,6 +60,7 @@ public class Seleccionar_nivel extends JFrame {
 
 		
 		JRadioButton rdb_avanzado = new JRadioButton("Avanzado");
+		rdb_avanzado.setActionCommand("6");
 		rdb_avanzado.setBounds(39, 139, 109, 23);
 		contentPane_1.add(rdb_avanzado);
 		rdb_avanzado.setActionCommand("6");
@@ -93,9 +95,9 @@ public class Seleccionar_nivel extends JFrame {
 		
 		btn_aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				dificultad=Integer.parseInt(bgroup.getSelection().getActionCommand());
-
+				dificultad = Integer.parseInt(bgroup.getSelection().getActionCommand());
+				Panel_Base frame = new Panel_Base();
+				frame.setVisible(true);
 				dispose();
 			}
 		});
@@ -127,5 +129,9 @@ public class Seleccionar_nivel extends JFrame {
 	//getter
 	public int getDificultad() {
 		return this.dificultad;
+	}
+	
+	public static int getDificultad() {
+		return dificultad;
 	}
 }
