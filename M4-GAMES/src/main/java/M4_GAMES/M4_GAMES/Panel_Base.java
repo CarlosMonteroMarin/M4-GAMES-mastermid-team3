@@ -20,6 +20,8 @@ import M4_GAMES.M4_GAMES.ini_1.Colores;
 
 import javax.swing.JLabel;
 import java.awt.Panel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Panel_Base extends JFrame {
 	/**
@@ -37,11 +39,7 @@ public class Panel_Base extends JFrame {
 	 * Create the frame.
 	 */
 	public Panel_Base() {
-
-		Seleccionar_nivel frame1 = new Seleccionar_nivel();
-		frame1.setVisible(true);
 		
-
 		this.aux = new Colores(Seleccionar_nivel.getDificultad());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -60,7 +58,7 @@ public class Panel_Base extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JPanel objeto_comprobar = new JPanel();
+		final JPanel objeto_comprobar = new JPanel();
 		objeto_comprobar.setBounds(22, 11, 216, 43);
 		panel.add(objeto_comprobar);
 		objeto_comprobar.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,6 +69,7 @@ public class Panel_Base extends JFrame {
 		
 		JButton btn_comprobar_1 = new JButton("Comprobar");
 		btn_comprobar_1.setBounds(121, 10, 85, 23);
+		
 		objeto_comprobar.setLayout(null);
 		objeto_comprobar.add(color_1);
 		objeto_comprobar.add(btn_comprobar_1);
@@ -129,6 +128,13 @@ public class Panel_Base extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Solucion");
 		lblNewLabel_1.setBounds(525, 129, 124, 14);
 		contentPane.add(lblNewLabel_1);
+		
+		btn_comprobar_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				aux.comprobar_aciertos(contentPane,objeto_comprobar);
+			}
+		});
 
 		
 	}
