@@ -60,13 +60,14 @@ public class Panel_Base extends JFrame {
 		
     
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 321, 429);
+		panel.setBounds(10, 11, 282, 50);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 
-		JPanel objeto_comprobar = new JPanel();
-		objeto_comprobar.setBounds(22, 11, 169, 43);ç
+		final JPanel objeto_comprobar = new JPanel();
+		objeto_comprobar.setBounds(22, 11, 169, 43);
+		
 		panel.add(objeto_comprobar);
 		objeto_comprobar.setBorder(new EmptyBorder(5, 5, 5, 5));
 		objeto_comprobar.setLayout(null);
@@ -74,9 +75,6 @@ public class Panel_Base extends JFrame {
 		final Panel color_1 = new Panel();
 		color_1.setBounds(10, 10, 20, 20);
 		color_1.setBackground(Color.WHITE);
-
-		JButton btn_comprobar_1 = new JButton("Comprobar");
-		btn_comprobar_1.setBounds(121, 10, 85, 23);
 		
 		objeto_comprobar.setLayout(null);
 		objeto_comprobar.add(color_1);
@@ -140,7 +138,7 @@ public class Panel_Base extends JFrame {
 			});
 		}
 		
-		JButton btn_comprobar_1 = new JButton("Comprobar");
+		final JButton btn_comprobar_1 = new JButton("Comprobar");
 		btn_comprobar_1.setBounds(192, 21, 85, 23);
 		panel.add(btn_comprobar_1);
 		
@@ -187,7 +185,11 @@ public class Panel_Base extends JFrame {
 		btn_comprobar_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				aux.comprobar_aciertos(contentPane,objeto_comprobar);
+				if(aux.comprovarIntentos()) {
+					btn_comprobar_1.setVisible(false);
+				} else {
+					aux.comprobar_aciertos(contentPane,objeto_comprobar);
+				}
 			}
 		});
 

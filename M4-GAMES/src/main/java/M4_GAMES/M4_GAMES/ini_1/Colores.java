@@ -3,29 +3,41 @@ package M4_GAMES.M4_GAMES.ini_1;
 import java.awt.Color;
 import java.awt.Panel;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Colores {
 private static int VALOR_DEFAULT_DIFICULTAD = 4;
+private static int VALOR_INTENTOS_DEFAULT = 10;
 	
 	private static Color colores_disponibles[];
 	private Color[] solucion_colores;
-	public int dificultad=0;
-	private int principio=0;
+	public int dificultad;
+	private int principio;
 	private int intentos;
+	private int principi;
+	private int altura;
+	private int num_intentos;
+	
 	
 	public Colores(int dificultad) {
 		this.dificultad=dificultad;
 		if(dificultad > 4 && dificultad <= 6) {
 			this.colores_disponibles= new Color[dificultad];
 			this.solucion_colores = new Color[dificultad];
+			if(dificultad==5) this.intentos=8;
+			if(dificultad == 6) this.intentos=6;
+			
 		}else {
 			this.colores_disponibles = new Color[VALOR_DEFAULT_DIFICULTAD];
 			this.solucion_colores = new Color[VALOR_DEFAULT_DIFICULTAD];
-			this.intentos = VALOR_DEFAULT_DIFICULTAD;
+			this.intentos = VALOR_INTENTOS_DEFAULT;
 		}
 		
 		this.principio=525;
+		this.principi=315;
+		this.altura=35;
+		this.num_intentos = 0;
 	}
 	
 	public void crear_colores(JPanel contentPane) {
@@ -47,7 +59,7 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
             Panel panel1 = new Panel();
             panel1.setBounds(principio, 150, 20, 20);
             panel1.setBackground(solucion_colores[i]);
-            panel1.setVisible(false);
+            panel1.setVisible(true);
             this.principio=principio+35;
             contentPane.add(panel1);
             
@@ -55,35 +67,64 @@ private static int VALOR_DEFAULT_DIFICULTAD = 4;
     }
 	
 	public void comprobar_aciertos(JPanel contentPane, JPanel colores) {
-		int principi = 275;
-		int lugar_color_solucion=1;
-		int lugar_color_actual=1;
+		this.num_intentos++;
+		boolean trobat=false;
+		boolean iguals = false;
+		boolean fet=false;
+		int acertada=0;
+		
+		
+		if( acertada==this.dificultad ) {
+			JOptionPane.showMessageDialog(contentPane, "Enhorabuena, has ganado!");
+			return;
+		} else if(num_intentos == this.intentos) {
+			JOptionPane.showMessageDialog(contentPane, "Has llegado al limite de intentos!");
+			return;
+		}
 		
 		for(int i = 0; i < dificultad; i++) {
 			for(int j = 0; j < dificultad; j++) {
-				if(!(colores.getBackground().equals(Color.white))) {
-				if((solucion_colores[i].equals(colores.getComponent(j).getBackground()))&&(lugar_color_solucion == lugar_color_actual)){
-					Panel aux = new Panel();
-					aux.setBounds(principi, 33, 20, 20);
-					aux.setBackground(Color.BLACK);
-					contentPane.add(aux);
-					lugar_color_actual++;
-				}
-					if(solucion_colores[i].equals(colores.getComponent(j).getBackground()))
-					{
-						Panel aux = new Panel();
-						aux.setBounds(principi, 33, 20, 20);
-						aux.setBackground(Color.WHITE);
-						contentPane.add(aux);
-						lugar_color_actual++;
+				if((solucion_colores[j].equals(colores.getComponent(i).getBackground()))&&(fet==false)){
+					trobat = true;
+					if(i==j) {
+						iguals = true;
 					}
-						principi = principi + 35;
-						lugar_color_solucion++;
 				}
 			}
+				if((trobat)&&(iguals)&&(fet==false)) {
+					Panel aux1 = new Panel();
+					aux1.setBounds(principi, altura, 20, 20);
+					aux1.setBackground(Color.BLACK);
+					contentPane.add(aux1);
+					principi = principi + 25;
+					acertada++;
+					trobat=false;
+					fet=true;
+					
+				}
+				
+				if((trobat)&&(iguals == false)&&(fet==false)){
+					Panel aux1 = new Panel();
+					aux1.setBounds(principi, altura, 20, 20);
+					aux1.setBackground(Color.WHITE);
+					contentPane.add(aux1);
+					principi = principi + 25;
+					trobat=false;
+					fet = true;
+				}
+				iguals = false;
+				fet = false;
 		}
+		principi = 315;
+		altura = altura + 25;
+	}
 			
-		
+	public boolean comprovarIntentos() {
+		if(this.num_intentos==this.intentos) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public int getRandomNumber(int min, int max) {
