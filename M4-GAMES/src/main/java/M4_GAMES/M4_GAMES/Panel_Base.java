@@ -185,7 +185,7 @@ public class Panel_Base extends JFrame {
 		btn_comprobar_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(aux.comprovarIntentos()) {
+				if(aux.comprovarIntentos()||(aux.isAcabado())) {
 					btn_comprobar_1.setVisible(false);
 				} else {
 					aux.comprobar_aciertos(contentPane,objeto_comprobar);

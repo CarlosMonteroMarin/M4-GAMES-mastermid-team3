@@ -18,6 +18,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 	private int principi;
 	private int altura;
 	private int num_intentos;
+	private boolean acabado;
 	
 	
 	public Colores(int dificultad) {
@@ -38,6 +39,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		this.principi=315;
 		this.altura=35;
 		this.num_intentos = 0;
+		this.acabado=false;
 	}
 	
 	public void crear_colores(JPanel contentPane) {
@@ -74,10 +76,7 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		int acertada=0;
 		
 		
-		if( acertada==this.dificultad ) {
-			JOptionPane.showMessageDialog(contentPane, "Enhorabuena, has ganado!");
-			return;
-		} else if(num_intentos == this.intentos) {
+		if(num_intentos == this.intentos) {
 			JOptionPane.showMessageDialog(contentPane, "Has llegado al limite de intentos!");
 			return;
 		}
@@ -114,6 +113,11 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 				}
 				iguals = false;
 				fet = false;
+				if( acertada==this.dificultad ) {
+					JOptionPane.showMessageDialog(contentPane, "Enhorabuena, has ganado!");
+					acabado=true;
+					return;
+				}
 		}
 		principi = 315;
 		altura = altura + 25;
@@ -127,6 +131,12 @@ private static int VALOR_INTENTOS_DEFAULT = 10;
 		}
 	}
 	
+	
+	
+	public boolean isAcabado() {
+		return acabado;
+	}
+
 	public int getRandomNumber(int min, int max) {
 	    return (int) ((Math.random() * (max - min)) + min);
 	}
