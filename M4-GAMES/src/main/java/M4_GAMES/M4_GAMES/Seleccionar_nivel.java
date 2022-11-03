@@ -1,18 +1,10 @@
 package M4_GAMES.M4_GAMES;
-
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import M4_GAMES.M4_GAMES.ini_1.Colores;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
@@ -20,13 +12,12 @@ import java.awt.Font;
 
 public class Seleccionar_nivel extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private static int dificultad;
 	private JPanel contentPane;
 
-	/**
-	 * Create the frame.
-	 */
 	public Seleccionar_nivel() {
+		
 		setTitle("Seleccionar nivel");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 375, 396);
@@ -92,31 +83,9 @@ public class Seleccionar_nivel extends JFrame {
 				dispose();
 			}
 		});
-		
-		rdb_principiante.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=4;
-			}
-		});
-		
-		rdb_medio.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=5;
-			}
-		});
-		
-		rdb_avanzado.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dificultad=6;
-			}
-		});
-		
 	}
 	
-	//getter
+	//GETTER
 	public static int getDificultad() {
 		return dificultad;
 	}
